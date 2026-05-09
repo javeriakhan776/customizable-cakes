@@ -10,12 +10,13 @@ public class PoundsSelectionScreen extends JFrame{
         setSize(1400, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
-        ImageIcon icon1=new ImageIcon("resources/images/pounds/1 pound img.png");
-        ImageIcon icon2=new ImageIcon("resources/images/pounds/2 pound img.png");
-        ImageIcon icon3=new ImageIcon("resources/images/pounds/3 pound img.png");
-        ImageIcon icon4=new ImageIcon("resources/images/pounds/4 pound img.png");
-        ImageIcon icon5=new ImageIcon("resources/images/pounds/5 pound img.png");
-        ImageIcon icon6=new ImageIcon("resources/images/pounds/6 pound img.png");
+        panel.setBackground(new Color(255, 220, 105, 165));
+        ImageIcon icon1=new ImageIcon("resources/images/pounds/img.png");
+        ImageIcon icon2=new ImageIcon("resources/images/pounds/pound 2.png");
+        ImageIcon icon3=new ImageIcon("resources/images/pounds/img_2.png");
+        ImageIcon icon4=new ImageIcon("resources/images/pounds/img_3.png");
+        ImageIcon icon5=new ImageIcon("resources/images/pounds/img_4.png");
+        ImageIcon icon6=new ImageIcon("resources/images/pounds/img_5.png");
 
         Image image1=icon1.getImage();
         Image image2=icon2.getImage();
