@@ -1,4 +1,8 @@
 package gui.screens;
 
-public class FlowerSelectionScreen {
-}
+import javax.swing.*;
+import java.awt.*;
+
+public class FlowerSelectionScreen extends JFrame {
+
+    }
