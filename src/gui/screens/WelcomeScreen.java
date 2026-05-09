@@ -21,7 +21,6 @@ public class WelcomeScreen extends JFrame{
             };
 
         setContentPane(panel);
-        setVisible(true);
         JButton getStarted = new JButton("GET STARTED") {
             @Override
             protected void paintComponent(Graphics g) {
@@ -40,6 +39,7 @@ public class WelcomeScreen extends JFrame{
         getStarted.setForeground(Color.WHITE);
         getStarted.setContentAreaFilled(false);
         getStarted.setBorderPainted(false);
+        getStarted.setFocusPainted(false);
         getStarted.setBorder(BorderFactory.createEmptyBorder(10,25,10,25));
         getStarted.setPreferredSize(new Dimension(200,45));
         JPanel bottomPanel=new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -67,6 +67,7 @@ centerPanel.add(tagline);
 centerPanel.add(Box.createVerticalGlue());
         centerPanel.setBorder(BorderFactory.createEmptyBorder(150, 270, 0, 0));
     panel.add(centerPanel,BorderLayout.CENTER);
+    setVisible(true);
     }
     public static void main(String[] args) {
         new WelcomeScreen();
