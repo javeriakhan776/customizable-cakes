@@ -1,5 +1,9 @@
 package gui.screens;
 
+import gui.states.FlowerMode;
+import gui.states.IcingMode;
+import gui.states.SpongeMode;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
@@ -7,21 +11,19 @@ import java.util.Objects;
 public class CakeBuilderScreen extends JFrame {
 
     Image previewBg=new ImageIcon("resources/images/backgrounds/yellowCoffee.png").getImage();
-    Image spongeScreenBg=new ImageIcon("resources/images/backgrounds/blueClouds.png").getImage();
-    Image icingScreenBg =new ImageIcon("resources/images/backgrounds/greenCotton.png").getImage();
-    Image flowerScreenBg=new ImageIcon("resources/images/backgrounds/pinkFlowers.png.png").getImage();
-    Image optionsBg=spongeScreenBg;
+    Image optionsBg;
+
+
+    private JLabel optionsTitle = new JLabel();
 
     Font ruschaleFont;
-
 
     enum State{
         SPONGE_SELECTION_SCREEN,
         ICING_SELECTION_SCREEN,
         FLOWER_SELECTION_SCREEN
     }
-
-    private State state = State.SPONGE_SELECTION_SCREEN;
+    private State state = State.FLOWER_SELECTION_SCREEN;
 
     JPanel options = new JPanel(new BorderLayout()){
         @Override
@@ -39,13 +41,8 @@ public class CakeBuilderScreen extends JFrame {
         }
     };
 
-    OptionButtons spongeOptionButtons = new OptionButtons();
-    OptionButtons icingOptionButtons = new OptionButtons();
-    OptionButtons flowerOptionButtons = new OptionButtons();
-
     JSplitPane screenSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, options, preview);
 
-    JLabel optionsTitle = new JLabel();
 
     public CakeBuilderScreen(){
 
@@ -53,7 +50,7 @@ public class CakeBuilderScreen extends JFrame {
         setSize(1400, 1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        add(screenSplit);
+        this.add(screenSplit);
 
         try{
             ruschaleFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(getClass().getResourceAsStream("/fonts/Amsterdune-K7a8p.otf"))
@@ -74,37 +71,40 @@ public class CakeBuilderScreen extends JFrame {
         screenSplit.setDividerLocation(0.66);
         screenSplit.setEnabled(false);
         screenSplit.setDividerSize(3);
-        //preview.setBackground(new Color(255, 220, 105, 229));  ADDS PLAIN BACKGROUND COLOR TO PREVIEW PANEL
     }
 
-    private void setOptionsBackgroung(Image image){
-        optionsBg = image;
+    public void setOptionsBg(Image image){
+        this.optionsBg = image;
         options.repaint();
+    }
+
+    public void setOptionsTitle(String optionsTitle){
+        this.optionsTitle.setText(optionsTitle);
+    }
+
+    public void setOptionsPanel(JPanel panel){
+        options.add(panel);
     }
 
     private void renderScreen(){
         switch (state){
             case SPONGE_SELECTION_SCREEN: {
-                setOptionsBackgroung(spongeScreenBg);
-                optionsTitle.setText("Choose your cakes sponge base!");
-
-
+                SpongeMode spongeMode=new SpongeMode(this);
             }
             break;
             case ICING_SELECTION_SCREEN: {
-                setOptionsBackgroung(icingScreenBg);
-
+                IcingMode icingMode=new IcingMode(this);
             }
             break;
             case FLOWER_SELECTION_SCREEN: {
-                setOptionsBackgroung(flowerScreenBg);
-
+                FlowerMode flowerMode=new FlowerMode(this);
             }
             break;
         }
     }
 
     public static void main(String[] s){
-        new CakeBuilderScreen();
+        CakeBuilderScreen c=new CakeBuilderScreen();
+        System.out.println("CakeBuilderScreen constructor running");
     }
 }
