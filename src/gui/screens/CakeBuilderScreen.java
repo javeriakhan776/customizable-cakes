@@ -1,5 +1,6 @@
 package gui.screens;
 
+import gui.components.CakeCanvas;
 import gui.states.FlowerMode;
 import gui.states.IcingMode;
 import gui.states.SpongeMode;
@@ -15,6 +16,7 @@ public class CakeBuilderScreen extends JFrame {
 
 
     private JLabel optionsTitle = new JLabel();
+    private JLabel previewTitle = new JLabel();
 
     Font ruschaleFont;
 
@@ -23,7 +25,7 @@ public class CakeBuilderScreen extends JFrame {
         ICING_SELECTION_SCREEN,
         FLOWER_SELECTION_SCREEN
     }
-    private State state = State.FLOWER_SELECTION_SCREEN;
+    private State state = State.SPONGE_SELECTION_SCREEN;
 
     JPanel options = new JPanel(new BorderLayout()){
         @Override
@@ -43,6 +45,7 @@ public class CakeBuilderScreen extends JFrame {
 
     JSplitPane screenSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, options, preview);
 
+    CakeCanvas cakeCanvas = new CakeCanvas();
 
     public CakeBuilderScreen(){
 
@@ -63,14 +66,27 @@ public class CakeBuilderScreen extends JFrame {
         optionsTitle.setForeground(Color.BLACK);
         optionsTitle.setHorizontalAlignment(SwingConstants.LEFT);
         optionsTitle.setBorder(BorderFactory.createEmptyBorder(20,10,0,0));
+
         options.add(optionsTitle,BorderLayout.NORTH);
+
+        previewTitle.setFont(ruschaleFont);
+        previewTitle.setForeground(Color.BLACK);
+        previewTitle.setHorizontalAlignment(SwingConstants.LEFT);
+        previewTitle.setBorder(BorderFactory.createEmptyBorder(20,10,0,0));
+        previewTitle.setText("Preview");
+        previewTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        previewTitle.setOpaque(true);
+        previewTitle.setBackground(new Color(255, 220, 10, 77));
+
+        preview.add(previewTitle,BorderLayout.NORTH);
+        preview.add(cakeCanvas,BorderLayout.CENTER);
 
         renderScreen();
         setVisible(true);
 
         screenSplit.setDividerLocation(0.66);
         screenSplit.setEnabled(false);
-        screenSplit.setDividerSize(3);
+        screenSplit.setDividerSize(2);
     }
 
     public void setOptionsBg(Image image){
@@ -89,7 +105,7 @@ public class CakeBuilderScreen extends JFrame {
     private void renderScreen(){
         switch (state){
             case SPONGE_SELECTION_SCREEN: {
-                SpongeMode spongeMode=new SpongeMode(this);
+                SpongeMode spongeMode=new SpongeMode(this, cakeCanvas);
             }
             break;
             case ICING_SELECTION_SCREEN: {

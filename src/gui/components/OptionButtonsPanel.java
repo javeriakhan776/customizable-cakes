@@ -1,12 +1,15 @@
 package gui.components;
 
+import gui.states.IcingMode;
+import logic.Cake;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
 public class OptionButtonsPanel extends JPanel {
 
-    Font ruschaleFont;
+    Font amsterduneFont;
 
     private JButton option1 = new JButton();
     private JButton option2 = new JButton();
@@ -16,10 +19,10 @@ public class OptionButtonsPanel extends JPanel {
     public OptionButtonsPanel(){
 
         try{
-            ruschaleFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(getClass().getResourceAsStream("/fonts/Amsterdune-K7a8p.otf"))
+            amsterduneFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(getClass().getResourceAsStream("/fonts/Amsterdune-K7a8p.otf"))
             ).deriveFont(100f);
         } catch (Exception e){
-            ruschaleFont = new Font("Serif",Font.BOLD, 48);
+            amsterduneFont = new Font("Serif",Font.BOLD, 48);
         }
 
         this.setLayout(new GridLayout(2,2,10,10));
@@ -38,8 +41,21 @@ public class OptionButtonsPanel extends JPanel {
         button.setText(buttonText);
         button.setHorizontalTextPosition(SwingConstants.CENTER);
         button.setVerticalTextPosition(SwingConstants.CENTER);
-        button.setFont(ruschaleFont);
+        button.setFont(amsterduneFont);
         button.setForeground(Color.WHITE);
+    }
+
+    public void addButtonListener(JButton button, ImageIcon imageIcon, CakeCanvas cakeCanvas){
+        button.addActionListener(e ->{
+            cakeCanvas.getCake().setIcon(imageIcon);
+        });
+    }
+
+    public void addSpongeButtonListener(JButton button, ImageIcon imageIcon, CakeCanvas cakeCanvas, IcingMode icingMode){
+        button.addActionListener(e ->{
+            cakeCanvas.getCake().setIcon(imageIcon);
+            icingMode.
+        });
     }
 
     public void setOption1(ImageIcon image, String buttonText){
@@ -58,4 +74,19 @@ public class OptionButtonsPanel extends JPanel {
         setOptionButton(this.option4, image, buttonText);
     }
 
+    public JButton getOption1(){
+        return option1;
+    }
+
+    public JButton getOption2(){
+        return option2;
+    }
+
+    public JButton getOption3(){
+        return option3;
+    }
+
+    public JButton getOption4(){
+        return option4;
+    }
 }
