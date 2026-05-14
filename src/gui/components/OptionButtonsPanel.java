@@ -1,8 +1,5 @@
 package gui.components;
 
-import gui.states.IcingMode;
-import logic.Cake;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
@@ -43,19 +40,6 @@ public class OptionButtonsPanel extends JPanel {
         button.setVerticalTextPosition(SwingConstants.CENTER);
         button.setFont(amsterduneFont);
         button.setForeground(Color.WHITE);
-    }
-
-    public void addButtonListener(JButton button, ImageIcon imageIcon, CakeCanvas cakeCanvas){
-        button.addActionListener(e ->{
-            cakeCanvas.getCake().setIcon(imageIcon);
-        });
-    }
-
-    public void addSpongeButtonListener(JButton button, ImageIcon imageIcon, CakeCanvas cakeCanvas, IcingMode icingMode){
-        button.addActionListener(e ->{
-            cakeCanvas.getCake().setIcon(imageIcon);
-            icingMode.
-        });
     }
 
     public void setOption1(ImageIcon image, String buttonText){
