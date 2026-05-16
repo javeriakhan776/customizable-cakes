@@ -1,8 +1,8 @@
 package logic;
 
 public enum Flower {
-    ROSE,
-    LOTUS,
     LAVENDER,
-    SUNFLOWER
+    ROSE,
+    SUNFLOWER,
+    VANILLA
 }
