@@ -20,7 +20,7 @@ public class SpongeMode {
             this.sponge=sponge;
             cake.setSpongeFlavour(sponge);
             cakeBuilderScreen.showOk(true);
-            cakeBuilderScreen.renderOk(spongeOptionButtons,this.sponge);
+            cakeBuilderScreen.renderOk(spongeOptionButtons,this.sponge, cake);
         });
     }
 
