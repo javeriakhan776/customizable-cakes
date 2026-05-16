@@ -48,7 +48,7 @@ public class IcingMode {
             cakeCanvas.getCake().setIcon(imageIcon);
             cake.setIcingFlavour(icingFlavour);
             cakeBuilderScreen.showOk(true);
-            cakeBuilderScreen.renderOk(icingOptionButtons);
+            cakeBuilderScreen.renderOk(icingOptionButtons, cake);
         });
     }
 
