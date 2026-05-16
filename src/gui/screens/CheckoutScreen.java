@@ -88,4 +88,7 @@ totalText.setFont(new Font("Arial",Font.BOLD,18));
         return panel;
     }
 
+    public static void main(String[] s){
+        new WelcomeScreen();
+    }
 }
