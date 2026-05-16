@@ -1,13 +1,19 @@
 package gui.screens;
+import logic.Cake;
+import logic.Order;
+
+
 import javax.swing.JFrame;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 public class CheckoutScreen extends JFrame {
+    private JLabel totalPriceLabel;
+
+
     public CheckoutScreen(Order order){
-        double total=order.calculate_price();
-    }
-    public CheckoutScreen(){
+        Cake cake= order.getCake();
+
         setTitle("Checkout Screen");
         setSize(1400,1000);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -22,15 +28,17 @@ title.setFont(new Font("Arial",Font.BOLD,30));
 title.setForeground(new Color(255, 173, 80, 0));
 centerPanel.add(title);
         centerPanel.add(Box.createRigidArea(new Dimension(0,40)));
-        centerPanel.add(createItemRow("Chocolate Cake", "$200"));
-        centerPanel.add(createItemRow("Red Velvet", "$200"));
-        centerPanel.add(createItemRow("Vanilla Cake", "$200"));
+        centerPanel.add(createItemRow("POUNDS", String.valueOf(cake.getPounds())));
+        centerPanel.add(createItemRow("SPONGE", String.valueOf(cake.getSpongeFlavour())));
+        centerPanel.add(createItemRow("ICING",  String.valueOf(cake.getIcingFlavour())));
+        centerPanel.add(createItemRow("FLOWERS",  String.valueOf(cake.getFlower())));
+
         centerPanel.add(Box.createRigidArea(new Dimension(0,30)));
 JPanel totalPanel=new JPanel(new BorderLayout());
 totalPanel.setBackground(new Color(255, 220, 105, 190));
 JLabel totalText=new JLabel("TOTAL");
 totalText.setFont(new Font("Arial",Font.BOLD,18));
-        JLabel totalPrice=new JLabel("1000");
+        JLabel totalPrice=new JLabel("TOTAL PRICE "+ order.calculate_price());
         totalPrice.setFont(new Font("Arial",Font.BOLD,28));
         totalPanel.add(totalText,BorderLayout.WEST);
         totalPanel.add(totalPrice,BorderLayout.EAST);
@@ -81,6 +89,7 @@ totalText.setFont(new Font("Arial",Font.BOLD,18));
         return panel;
     }
     public static void main (String []args){
-        new CheckoutScreen();
+    //    Order order=new Order();
+    //    new CheckoutScreen(order);
     }
 }

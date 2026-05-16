@@ -1,10 +1,14 @@
 package gui.screens;
 
+import gui.components.CakeCanvas;
+import logic.Cake;
+import logic.Icing;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class PoundsSelectionScreen extends JFrame{
-
+ private Cake cake= new Cake();
     public PoundsSelectionScreen () {
         setTitle("pound selection");
         setSize(1400, 1000);
@@ -84,9 +88,26 @@ public class PoundsSelectionScreen extends JFrame{
         panel.add(btn6);
         add(panel);
         setVisible(true);
+        addButtonListener(btn1,this.cake,1);
+        addButtonListener(btn2,this.cake,2);
+        addButtonListener(btn3,this.cake,3);
+        addButtonListener(btn4,this.cake,4);
+        addButtonListener(btn5,this.cake,5);
+        addButtonListener(btn6,this.cake,6);
+
+
+    }
+    public void addButtonListener(JButton button, Cake cake, int pounds){
+        button.addActionListener(e ->{
+            cake.setPounds(pounds);
+         CakeBuilderScreen cakeBuilderScreen = new CakeBuilderScreen();
+
+        });
     }
     public static void main(String []args){
+
         new PoundsSelectionScreen();
+
     }
    }
 
