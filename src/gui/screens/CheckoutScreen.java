@@ -67,6 +67,7 @@ totalText.setFont(new Font("Arial",Font.BOLD,18));
         Paynow.setMaximumSize(new Dimension(400,60));
         Paynow.setAlignmentX(Component.CENTER_ALIGNMENT);
         Paynow.setBorder(new EmptyBorder(15,70,15,40));
+        Paynow.setOpaque(true);
         centerPanel.add(Paynow,BorderLayout.SOUTH);
 
         mainPanel.add(centerPanel);
