@@ -11,8 +11,8 @@ public class CheckoutScreen extends JFrame {
     private JLabel totalPriceLabel;
 
 
-    public CheckoutScreen(Order order){
-        Cake cake= order.getCake();
+    public CheckoutScreen(Cake cake,Order order){
+     //  Order order = new Order(cake);
 
         setTitle("Checkout Screen");
         setSize(1400,1000);
@@ -89,7 +89,8 @@ totalText.setFont(new Font("Arial",Font.BOLD,18));
         return panel;
     }
     public static void main (String []args){
-    //    Order order=new Order();
-    //    new CheckoutScreen(order);
+Cake cake=new Cake();
+Order order = new Order(cake);
+ new CheckoutScreen(cake,order);
     }
 }

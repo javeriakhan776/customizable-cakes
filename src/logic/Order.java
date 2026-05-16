@@ -12,20 +12,13 @@ import logic.Cake;
           return cake;
       }
 
-      int number_of_products;
-
-        enum Flavour {CHOCOLATE, VANILLA, STRAWBERRY, LOTUS, PINEAPPLE}
-
-        ;
-
-        enum Toppings {CHOCOLATE_CHIPS, CHOCOLATE_DRIPPING, STRAWBERRY_CHUNKS, LOTUS_DRIPPING, PINEAPPLE};
-        enum Icing {CHOCOLATE, VANILLA, STRAWBERRY, LOTUS};
-        double price;
+      int quantity;
+      double price = 0;
 public Order(Cake cake){
     this.cake=cake;
 }
         public double calculate_price() {
-            double price = 0;
+
            if (cake.getPounds()==1){
                price=price+350;
            }
@@ -80,7 +73,7 @@ public Order(Cake cake){
             else if (cake.getFlower()== Flower.LAVENDER){
                 price =price + 280;
             }
-            return price * number_of_products;
+            return price * quantity;
             }
 
 
