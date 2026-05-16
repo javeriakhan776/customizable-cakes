@@ -16,46 +16,36 @@ import java.util.Objects;
 
 public class CakeBuilderScreen extends JFrame {
 
-    Image previewBg=new ImageIcon("resources/images/backgrounds/yellowCoffee.png").getImage();
+    Image previewBg = new ImageIcon("resources/images/backgrounds/yellowCoffee.png").getImage();
     Image optionsBg;
-
-    Cake cake = new Cake();
-
-    enum State{
-        SPONGE,
-        ICING,
-        FLOWER
-    }
-    private State state = State.SPONGE;
 
     private JLabel optionsTitle = new JLabel();
     private JLabel previewTitle = new JLabel();
     public JButton Ok = new JButton("OK");
 
-    public void showOk(boolean showOk){
-        if (showOk){
+    public void showOk(boolean showOk) {
+        if (showOk) {
             Ok.setVisible(true);
-        }
-        else{
+        } else {
             Ok.setVisible(false);
         }
     }
 
     Font amsterduneFont;
 
-    public JPanel options = new JPanel(new BorderLayout()){
+    public JPanel options = new JPanel(new BorderLayout()) {
         @Override
-        protected void paintComponent(Graphics g){
+        protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.drawImage(optionsBg,0,0,getWidth(),getHeight(),this);
+            g.drawImage(optionsBg, 0, 0, getWidth(), getHeight(), this);
         }
     };
 
-    public JPanel preview = new JPanel(new BorderLayout()){
+    public JPanel preview = new JPanel(new BorderLayout()) {
         @Override
-        protected void paintComponent(Graphics g){
+        protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.drawImage(previewBg,0,0,getWidth(),getHeight(),this);
+            g.drawImage(previewBg, 0, 0, getWidth(), getHeight(), this);
         }
     };
 
@@ -64,7 +54,7 @@ public class CakeBuilderScreen extends JFrame {
 
     CakeCanvas cakeCanvas = new CakeCanvas();
 
-    public CakeBuilderScreen(){
+    public CakeBuilderScreen(Cake cake) {
 
         setTitle("Build your cake!");
         setSize(1400, 1000);
@@ -74,35 +64,35 @@ public class CakeBuilderScreen extends JFrame {
 
         this.add(screenSplit);
 
-        try{
+        try {
             amsterduneFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(getClass().getResourceAsStream("/fonts/Amsterdune-K7a8p.otf"))
             ).deriveFont(100f);
-        } catch (Exception e){
-            amsterduneFont = new Font("Serif",Font.BOLD, 48);
+        } catch (Exception e) {
+            amsterduneFont = new Font("Serif", Font.BOLD, 48);
         }
 
         optionsTitle.setFont(amsterduneFont);
         optionsTitle.setForeground(Color.BLACK);
         optionsTitle.setHorizontalAlignment(SwingConstants.LEFT);
-        optionsTitle.setBorder(BorderFactory.createEmptyBorder(20,10,0,0));
+        optionsTitle.setBorder(BorderFactory.createEmptyBorder(20, 10, 0, 0));
 
-        options.add(optionsTitle,BorderLayout.NORTH);
+        options.add(optionsTitle, BorderLayout.NORTH);
 
         previewTitle.setFont(amsterduneFont);
         previewTitle.setForeground(Color.BLACK);
         previewTitle.setHorizontalAlignment(SwingConstants.LEFT);
-        previewTitle.setBorder(BorderFactory.createEmptyBorder(20,10,0,0));
+        previewTitle.setBorder(BorderFactory.createEmptyBorder(20, 10, 0, 0));
         previewTitle.setText("Preview");
         previewTitle.setHorizontalAlignment(SwingConstants.CENTER);
         previewTitle.setOpaque(true);
         previewTitle.setBackground(new Color(255, 220, 10, 77));
 
-        preview.add(previewTitle,BorderLayout.NORTH);
-        preview.add(cakeCanvas,BorderLayout.CENTER);
+        preview.add(previewTitle, BorderLayout.NORTH);
+        preview.add(cakeCanvas, BorderLayout.CENTER);
 
-        Ok.setPreferredSize(new Dimension(900,100));
+        Ok.setPreferredSize(new Dimension(900, 100));
         Ok.setBorderPainted(false);
-        Ok.setIcon(ImageUtils.scaleIcon("resources/images/backgrounds/yellowCoffee.png",900,900));
+        Ok.setIcon(ImageUtils.scaleIcon("resources/images/backgrounds/yellowCoffee.png", 900, 900));
         Ok.setFont(amsterduneFont);
         Ok.setText("OK");
         Ok.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -111,9 +101,9 @@ public class CakeBuilderScreen extends JFrame {
         south.add(Ok);
         showOk(false);
 
-        preview.add(south,BorderLayout.SOUTH);
+        preview.add(south, BorderLayout.SOUTH);
 
-        SpongeMode spongeMode = new SpongeMode(this,cakeCanvas,cake);
+        SpongeMode spongeMode = new SpongeMode(this, cakeCanvas, cake);
         setVisible(true);
 
         screenSplit.setDividerLocation(0.66);
@@ -121,8 +111,8 @@ public class CakeBuilderScreen extends JFrame {
         screenSplit.setDividerSize(2);
     }
 
-    public void renderOk(OptionButtonsPanel optionButtonsPanel, Sponge sponge){
-        for (ActionListener al : Ok.getActionListeners()){
+    public void renderOk(OptionButtonsPanel optionButtonsPanel, Sponge sponge, Cake cake) {
+        for (ActionListener al : Ok.getActionListeners()) {
             Ok.removeActionListener(al);
         }
         Ok.addActionListener(e -> {
@@ -132,8 +122,8 @@ public class CakeBuilderScreen extends JFrame {
         });
     }
 
-    public void renderOk(OptionButtonsPanel optionButtonsPanel){
-        for (ActionListener al : Ok.getActionListeners()){
+    public void renderOk(OptionButtonsPanel optionButtonsPanel, Cake cake) {
+        for (ActionListener al : Ok.getActionListeners()) {
             Ok.removeActionListener(al);
         }
         Ok.addActionListener(e -> {
@@ -143,21 +133,16 @@ public class CakeBuilderScreen extends JFrame {
         });
     }
 
-    public void setOptionsBg(Image image){
+    public void setOptionsBg(Image image) {
         this.optionsBg = image;
         options.repaint();
     }
 
-    public void setOptionsTitle(String optionsTitle){
+    public void setOptionsTitle(String optionsTitle) {
         this.optionsTitle.setText(optionsTitle);
     }
 
-    public void setOptionsPanel(JPanel panel){
-        options.add(panel,BorderLayout.CENTER);
-    }
-
-    public static void main(String[] s){
-        CakeBuilderScreen c=new CakeBuilderScreen();
-        System.out.println("CakeBuilderScreen constructor running");
+    public void setOptionsPanel(JPanel panel) {
+        options.add(panel, BorderLayout.CENTER);
     }
 }
