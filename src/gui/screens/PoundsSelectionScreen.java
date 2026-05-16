@@ -1,8 +1,6 @@
 package gui.screens;
 
-import gui.components.CakeCanvas;
 import logic.Cake;
-import logic.Icing;
 
 import javax.swing.*;
 import java.awt.*;
@@ -103,11 +101,6 @@ public class PoundsSelectionScreen extends JFrame{
          CakeBuilderScreen cakeBuilderScreen = new CakeBuilderScreen(cake);
 
         });
-    }
-    public static void main(String []args){
-
-        new PoundsSelectionScreen();
-
     }
    }
 

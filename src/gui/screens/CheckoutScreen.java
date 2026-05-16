@@ -8,7 +8,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 public class CheckoutScreen extends JFrame {
-    private JLabel totalPriceLabel;
 
 
     public CheckoutScreen(Cake cake,Order order){
@@ -88,9 +87,5 @@ totalText.setFont(new Font("Arial",Font.BOLD,18));
         panel.setBorder(new EmptyBorder(10,0,10,0));
         return panel;
     }
-    public static void main (String []args){
-Cake cake=new Cake();
-Order order = new Order(cake);
- new CheckoutScreen(cake,order);
-    }
+
 }

@@ -2,21 +2,9 @@ package gui.screens;
 import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.*;
-import java.util.Objects;
-
 
 public class WelcomeScreen extends JFrame{
-    
-    Font babyPandaFont ;
     public WelcomeScreen() {
-
-        try {
-            babyPandaFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(getClass().getResourceAsStream("/fonts/Baby Panda.ttf"))
-            ).deriveFont(50f);
-        } catch (Exception e) {
-            babyPandaFont = new Font("Serif", Font.BOLD, 48);
-        }
-        
         setTitle("Cake Ordering System");
         setSize(1400, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,7 +32,7 @@ public class WelcomeScreen extends JFrame{
                 super.paintComponent(g);
             }
         };
-        getStarted.setFont(babyPandaFont);
+        getStarted.setFont(new Font ("Comic Sans MS",Font.BOLD,16));
         getStarted.setBackground(new Color(255, 220, 105));
         getStarted.setForeground(Color.WHITE);
         getStarted.setContentAreaFilled(false);
@@ -60,12 +48,12 @@ public class WelcomeScreen extends JFrame{
         panel.add(bottomPanel,BorderLayout.SOUTH);
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(50, 0, 300, 500));
         JLabel title=new JLabel("CAKE & CRUMBS ", SwingConstants.CENTER);
-        title.setFont(babyPandaFont);
+        title.setFont(new Font("Comic Sans MS",Font.BOLD,50));
         title.setForeground(Color.BLACK);
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         JLabel tagline=new JLabel("Design your dream cake, your way !! ",SwingConstants.CENTER);
-        tagline.setFont(babyPandaFont);
+        tagline.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
         tagline.setForeground(Color.BLACK);
         tagline.setAlignmentX(Component.LEFT_ALIGNMENT);
 JPanel centerPanel=new JPanel();
@@ -83,7 +71,5 @@ centerPanel.add(Box.createVerticalGlue());
     });
     setVisible(true);
     }
-    public static void main(String[] args) {
-        new WelcomeScreen();
-    }
+
 }

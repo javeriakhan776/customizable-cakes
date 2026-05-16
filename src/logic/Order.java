@@ -1,12 +1,10 @@
 package logic;
-import logic.Cake;
+
 
   public  class Order {
       private Cake cake;
 
-      public void setCake(Cake cake) {
-              this.cake = cake;
-      }
+
 
       public Cake getCake() {
           return cake;
@@ -82,10 +80,8 @@ public Order(Cake cake){
         public static void main(String[] args) {
 
             Cake cake1=new Cake();
-            Cake cake2=new Cake();
 
             Order order1 = new Order(cake1);
-            Order order2 = new Order(cake2);
 
             System.out.println(order1.calculate_price());
 
