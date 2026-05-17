@@ -27,10 +27,12 @@ public class FlowerMode {
 
     OptionButtonsPanel flowerOptionButtons = new OptionButtonsPanel();
 
-    public void addButtonListener(JButton button, CakeCanvas cakeCanvas, ImageIcon imageIcon, Cake cake, Flower flower){
+    public void addButtonListener(JButton button, CakeCanvas cakeCanvas, ImageIcon imageIcon, Cake cake, Flower flower, CakeBuilderScreen cakeBuilderScreen){
         button.addActionListener(e ->{
             cakeCanvas.getCake().setIcon(imageIcon);
             cake.setFlower(flower);
+            cakeBuilderScreen.showOk(true);
+            cakeBuilderScreen.renderOk(cake);
         });
     }
 
@@ -44,10 +46,10 @@ public class FlowerMode {
         flowerOptionButtons.setOption3(sunFLowerOption,"Sun Flower");
         flowerOptionButtons.setOption4(vanillaOption, "Vanilla");
 
-        addButtonListener(flowerOptionButtons.getOption1(), cakeCanvas, lavender, cake, Flower.LAVENDER);
-        addButtonListener(flowerOptionButtons.getOption2(), cakeCanvas, rose, cake, Flower.ROSE);
-        addButtonListener(flowerOptionButtons.getOption3(), cakeCanvas, sunFlower, cake, Flower.SUNFLOWER);
-        addButtonListener(flowerOptionButtons.getOption4(), cakeCanvas, vanilla, cake, Flower.VANILLA);
+        addButtonListener(flowerOptionButtons.getOption1(), cakeCanvas, lavender, cake, Flower.LAVENDER, cakeBuilderScreen);
+        addButtonListener(flowerOptionButtons.getOption2(), cakeCanvas, rose, cake, Flower.ROSE, cakeBuilderScreen);
+        addButtonListener(flowerOptionButtons.getOption3(), cakeCanvas, sunFlower, cake, Flower.SUNFLOWER, cakeBuilderScreen);
+        addButtonListener(flowerOptionButtons.getOption4(), cakeCanvas, vanilla, cake, Flower.VANILLA, cakeBuilderScreen);
 
     }
 

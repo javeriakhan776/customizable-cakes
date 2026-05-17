@@ -66,8 +66,9 @@ centerPanel.add(Box.createVerticalGlue());
         centerPanel.setBorder(BorderFactory.createEmptyBorder(150, 270, 0, 0));
     panel.add(centerPanel,BorderLayout.CENTER);
     getStarted.addActionListener(e -> {
+
         new PoundsSelectionScreen ().setVisible(true);
-        dispose();
+        this. dispose();
     });
     setVisible(true);
     }

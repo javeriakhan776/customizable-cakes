@@ -97,9 +97,10 @@ public class PoundsSelectionScreen extends JFrame{
     }
     public void addButtonListener(JButton button, int pounds){
         button.addActionListener(e ->{
+
             cake.setPounds(pounds);
          CakeBuilderScreen cakeBuilderScreen = new CakeBuilderScreen(cake);
-
+            this.dispose();
         });
     }
    }

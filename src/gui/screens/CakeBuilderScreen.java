@@ -7,6 +7,7 @@ import gui.states.IcingMode;
 import gui.states.SpongeMode;
 import gui.utils.ImageUtils;
 import logic.Cake;
+import logic.Order;
 import logic.Sponge;
 
 import javax.swing.*;
@@ -130,6 +131,18 @@ public class CakeBuilderScreen extends JFrame {
             options.remove(optionButtonsPanel);
             new FlowerMode(this, cakeCanvas, cake);
             showOk(false);
+            Ok.setText("Finish");
+        });
+    }
+
+    public void renderOk(Cake cake) {
+        for (ActionListener al : Ok.getActionListeners()) {
+            Ok.removeActionListener(al);
+        }
+        Ok.addActionListener(e -> {
+
+            new CheckoutScreen( new Order(cake));
+            this.dispose();
         });
     }
 
