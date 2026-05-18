@@ -10,6 +10,8 @@ public class PoundsSelectionScreen extends JFrame{
     public PoundsSelectionScreen () {
         setTitle("pound selection");
         setSize(1400, 1000);
+        setLocationRelativeTo(null);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
         panel.setBackground(new Color(255, 220, 105, 165));
@@ -28,8 +30,8 @@ public class PoundsSelectionScreen extends JFrame{
         Image image6=icon6.getImage();
 
 
-        int btnwidth=465;
-        int btnheight=400;
+        int btnwidth=400;
+        int btnheight=340;
         Image scaled1=image1.getScaledInstance(btnwidth,btnheight,Image.SCALE_SMOOTH);
         Image scaled2=image2.getScaledInstance(btnwidth,btnheight,Image.SCALE_SMOOTH);
         Image scaled3=image3.getScaledInstance(btnwidth,btnheight,Image.SCALE_SMOOTH);

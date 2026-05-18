@@ -73,19 +73,5 @@ public Order(Cake cake){
             }
             return price * quantity;
             }
-
-
-
-
-        public static void main(String[] args) {
-
-            Cake cake1=new Cake();
-
-            Order order1 = new Order(cake1);
-
-            System.out.println(order1.calculate_price());
-
-
-        }
     }
 

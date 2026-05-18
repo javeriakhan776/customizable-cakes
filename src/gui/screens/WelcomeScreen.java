@@ -7,6 +7,8 @@ public class WelcomeScreen extends JFrame{
     public WelcomeScreen() {
         setTitle("Cake Ordering System");
         setSize(1400, 1000);
+        setLocationRelativeTo(null);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel=new JPanel(){
             Image bg=new ImageIcon("resources/images/backgrounds/img.png").getImage();
@@ -72,7 +74,4 @@ centerPanel.add(Box.createVerticalGlue());
     });
     setVisible(true);
     }
-public static void main(String [] args){
-        new WelcomeScreen();
-}
 }

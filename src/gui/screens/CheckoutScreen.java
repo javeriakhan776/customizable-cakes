@@ -13,6 +13,8 @@ public class CheckoutScreen extends JFrame {
     private void showSuccessPopup() {
         JDialog dialogue = new JDialog(this, "Order Confirmed ",true);
         dialogue.setSize(250,150);
+        setLocationRelativeTo(null);
+        setResizable(false);
         dialogue.setLocationRelativeTo(this);
         dialogue.setUndecorated(true);
 
@@ -140,9 +142,5 @@ totalText.setFont(new Font("Arial",Font.BOLD,18));
         panel.add(priceLabel,BorderLayout.EAST);
         panel.setBorder(new EmptyBorder(10,0,10,0));
         return panel;
-    }
-
-    public static void main(String[] s){
-        new WelcomeScreen();
     }
 }
