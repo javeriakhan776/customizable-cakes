@@ -10,14 +10,13 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 public class CheckoutScreen extends JFrame {
 
+
     private void showSuccessPopup() {
         JDialog dialogue = new JDialog(this, "Order Confirmed ",true);
         dialogue.setSize(250,150);
-        setLocationRelativeTo(null);
-        setResizable(false);
         dialogue.setLocationRelativeTo(this);
         dialogue.setUndecorated(true);
-
+        setLocationRelativeTo(null);
         JPanel panel = new JPanel();
         panel.setBackground(new Color(255, 255, 255, 255));
         panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
@@ -48,7 +47,7 @@ public class CheckoutScreen extends JFrame {
     }
 
     public CheckoutScreen(Order order){
-       Cake cake = order.getCake();
+        Cake cake = order.getCake();
 
         setTitle("Checkout Screen");
         setSize(1400,1000);
@@ -66,11 +65,11 @@ public class CheckoutScreen extends JFrame {
         centerPanel.setBackground(new Color(255, 220, 105, 150));
         centerPanel.setBorder(new EmptyBorder(20,20,20,20));
         centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-JLabel title=new JLabel("Summary");
-title.setAlignmentX(Component.CENTER_ALIGNMENT);
-title.setFont(new Font("Arial",Font.BOLD,30));
-title.setForeground(new Color(255, 173, 80));
-centerPanel.add(title);
+        JLabel title=new JLabel("Summary");
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        title.setFont(new Font("Arial",Font.BOLD,30));
+        title.setForeground(new Color(255, 173, 80));
+        centerPanel.add(title);
         centerPanel.add(Box.createRigidArea(new Dimension(0,40)));
         centerPanel.add(createItemRow("POUNDS", String.valueOf(cake.getPounds())));
         centerPanel.add(createItemRow("SPONGE", String.valueOf(cake.getSpongeFlavour())));
@@ -78,10 +77,10 @@ centerPanel.add(title);
         centerPanel.add(createItemRow("FLOWERS",  String.valueOf(cake.getFlower())));
 
         centerPanel.add(Box.createRigidArea(new Dimension(0,30)));
-JPanel totalPanel=new JPanel(new BorderLayout());
-totalPanel.setBackground(new Color(255, 220, 105, 190));
-JLabel totalText=new JLabel("TOTAL");
-totalText.setFont(new Font("Arial",Font.BOLD,18));
+        JPanel totalPanel=new JPanel(new BorderLayout());
+        totalPanel.setBackground(new Color(255, 220, 105, 190));
+        JLabel totalText=new JLabel("TOTAL");
+        totalText.setFont(new Font("Arial",Font.BOLD,18));
         JLabel totalPrice=new JLabel("  "+ order.calculate_price());
         totalPrice.setFont(new Font("Arial",Font.BOLD,28));
         totalPanel.add(totalText,BorderLayout.WEST);
@@ -109,7 +108,8 @@ totalText.setFont(new Font("Arial",Font.BOLD,18));
 
         JButton Paynow = new RoundedButton("PAY NOW");
         Paynow.addActionListener(e -> {
-           showSuccessPopup();
+            showSuccessPopup();
+            dispose();
         });
         Paynow.setFont(new Font("Arial",Font.BOLD,22));
         Paynow.setBackground(new Color(255, 220, 105, 231));
@@ -119,7 +119,7 @@ totalText.setFont(new Font("Arial",Font.BOLD,18));
         Paynow.setMaximumSize(new Dimension(400,60));
         Paynow.setAlignmentX(Component.CENTER_ALIGNMENT);
         Paynow.setBorder(new EmptyBorder(15,70,15,40));
-       JPanel btnPanel = new JPanel();
+        JPanel btnPanel = new JPanel();
         Paynow.setOpaque(false);
         btnPanel.setOpaque(false);
         btnPanel.add(Paynow);
