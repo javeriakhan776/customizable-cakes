@@ -37,6 +37,7 @@ public class FlowerMode {
     }
 
     public FlowerMode(CakeBuilderScreen cakeBuilderScreen, CakeCanvas cakeCanvas, Cake cake){
+        cakeBuilderScreen.setState(CakeBuilderScreen.State.FLOWER_SELECTION_SCREEN);
         cakeBuilderScreen.setOptionsBg(flowerScreenBg);
         cakeBuilderScreen.setOptionsTitle("Choose your cake's floral theme!");
         cakeBuilderScreen.setOptionsPanel(flowerOptionButtons);

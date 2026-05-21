@@ -54,6 +54,7 @@ public class IcingMode {
 
     public IcingMode(CakeBuilderScreen cakeBuilderScreen, CakeCanvas cakeCanvas, Sponge sponge, Cake cake){
 
+        cakeBuilderScreen.setState(CakeBuilderScreen.State.ICING_SELECTION_SCREEN);
         cakeBuilderScreen.setOptionsBg(icingScreenBg);
         cakeBuilderScreen.setOptionsTitle("Choose your cake's icing!");
         cakeBuilderScreen.setOptionsPanel(icingOptionButtons);

@@ -19,10 +19,26 @@ public class CakeBuilderScreen extends JFrame {
 
     Image previewBg = new ImageIcon("resources/images/backgrounds/yellowCoffee.png").getImage();
     Image optionsBg;
+    ImageIcon undoIcon = ImageUtils.scaleIcon("resources/images/options/undo/undoArrowSharp.png",100,100);
+
+    public enum State{
+        SPONGE_SELECTION_SCREEN,
+        ICING_SELECTION_SCREEN,
+        FLOWER_SELECTION_SCREEN
+    }
+
+    private State state;
+
+    public void setState(State state){
+        this.state=state;
+    }
 
     private JLabel optionsTitle = new JLabel();
     private JLabel previewTitle = new JLabel();
+
     public JButton Ok = new JButton("OK");
+    public JButton undo=new JButton();
+
 
     public void showOk(boolean showOk) {
         if (showOk) {
@@ -52,6 +68,7 @@ public class CakeBuilderScreen extends JFrame {
 
     JSplitPane screenSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, options, preview);
     JPanel south = new JPanel();
+    JPanel west = new JPanel();
 
     CakeCanvas cakeCanvas = new CakeCanvas();
 
@@ -79,6 +96,32 @@ public class CakeBuilderScreen extends JFrame {
 
         options.add(optionsTitle, BorderLayout.NORTH);
 
+        undo.setPreferredSize(new Dimension(100,100));
+        undo.setMaximumSize(undo.getPreferredSize());
+        undo.setBorderPainted(false);
+        undo.setIcon(undoIcon);
+
+        undo.addActionListener(e -> {
+
+            options.remove(((BorderLayout) options.getLayout()).getLayoutComponent(BorderLayout.CENTER));
+            showOk(false);
+            Ok.setText("OK");
+
+            if (state == State.SPONGE_SELECTION_SCREEN){
+                new PoundsSelectionScreen ();
+            } else if (state == State.ICING_SELECTION_SCREEN){
+                new SpongeMode(this, cakeCanvas, cake);
+            } else if (state == State.FLOWER_SELECTION_SCREEN) {
+                new IcingMode(this, cakeCanvas, SpongeMode.getSponge(), cake);
+            }
+        });
+
+        west.setBackground(new Color(0,0,0,0));
+        west.setLayout(new BoxLayout(west, BoxLayout.Y_AXIS));
+        west.add(Box.createVerticalGlue());
+        west.add(undo);
+        options.add(west, BorderLayout.WEST);
+
         previewTitle.setFont(amsterduneFont);
         previewTitle.setForeground(Color.BLACK);
         previewTitle.setHorizontalAlignment(SwingConstants.LEFT);
@@ -104,7 +147,7 @@ public class CakeBuilderScreen extends JFrame {
 
         preview.add(south, BorderLayout.SOUTH);
 
-        SpongeMode spongeMode = new SpongeMode(this, cakeCanvas, cake);
+        new SpongeMode(this, cakeCanvas, cake);
         setVisible(true);
 
         screenSplit.setDividerLocation(0.66);

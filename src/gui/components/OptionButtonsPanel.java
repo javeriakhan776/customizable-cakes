@@ -23,7 +23,7 @@ public class OptionButtonsPanel extends JPanel {
         }
 
         this.setLayout(new GridLayout(2,2,10,10));
-        this.setBorder(BorderFactory.createEmptyBorder(50,200,75,0));
+        this.setBorder(BorderFactory.createEmptyBorder(50,100,75,0));
         this.setBackground(new Color(0,0,0,0));
         this.setOpaque(false);
 

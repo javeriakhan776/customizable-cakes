@@ -12,15 +12,19 @@ import java.awt.*;
 
 public class SpongeMode {
 
-    private Sponge sponge;
+    private static Sponge sponge;
+
+    public static Sponge getSponge() {
+        return sponge;
+    }
 
     public void addButtonListener(JButton button, CakeCanvas cakeCanvas, ImageIcon imageIcon, Sponge sponge, Cake cake, CakeBuilderScreen cakeBuilderScreen){
         button.addActionListener(e ->{
             cakeCanvas.getCake().setIcon(imageIcon);
-            this.sponge=sponge;
+            SpongeMode.sponge=sponge;
             cake.setSpongeFlavour(sponge);
             cakeBuilderScreen.showOk(true);
-            cakeBuilderScreen.renderOk(spongeOptionButtons,this.sponge, cake);
+            cakeBuilderScreen.renderOk(spongeOptionButtons,SpongeMode.sponge, cake);
         });
     }
 
@@ -39,8 +43,9 @@ public class SpongeMode {
     OptionButtonsPanel spongeOptionButtons = new OptionButtonsPanel();
 
     public SpongeMode(CakeBuilderScreen cakeBuilderScreen, CakeCanvas cakeCanvas, Cake cake){
+        cakeBuilderScreen.setState(CakeBuilderScreen.State.SPONGE_SELECTION_SCREEN);
         cakeBuilderScreen.setOptionsBg(spongeScreenBg);
-        cakeBuilderScreen.setOptionsTitle("Choose your cake's sponge sponges!");
+        cakeBuilderScreen.setOptionsTitle("Choose your cake's sponge!");
         cakeBuilderScreen.setOptionsPanel(spongeOptionButtons);
 
         spongeOptionButtons.setOption1(chocolateOption,"Chocolate");
